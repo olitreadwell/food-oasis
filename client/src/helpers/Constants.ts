@@ -77,7 +77,7 @@ const TENANT_SUBDOMAINS: Record<number, string[]> = {
 };
 
 function getTenantId(): TenantId {
-  if (process.env.NODE_ENV === "development") {
+  if (import.meta.env.DEV) {
     return (Number(optionalEnvVar("VITE_TENANT_ID")) || 1) as TenantId;
   }
   const tenant = Object.entries(TENANT_SUBDOMAINS).find(([id, values]) => {
